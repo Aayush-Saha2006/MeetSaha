@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Projects | Aayush Saha</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Model Viewer -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        .projects-page-main {
+            padding-top: 5rem;
+            min-height: 100vh;
+        }
+        .back-btn {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        .back-btn:hover {
+            background: white;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .page-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 3rem;
+            font-family: var(--font-heading);
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-teal));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <a href="index.html" class="back-btn">&larr; Back to Home</a>
+
+    <main class="projects-page-main">
+        <div class="glass-container content-card" style="max-width: 800px; margin: 0 auto; width: 90%;">
+            <h1 class="page-title" id="dynamicTitle">My Projects</h1>
+            
+            <!-- Web Projects View -->
+            <div id="webProjectsView" class="projects-view">
+                <div class="project-card">
+                    <h3>Subway Surfer using Gestures</h3>
+                    <a href="https://gesturerun.netlify.app/" target="_blank" class="project-link">Play Game ↗</a>
+                    <p>A hand gesture-controlled Subway Surfer-like game set in a world akin to Temple Run. Uses device camera and AI hand tracking to translate physical movements into game controls.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Code Buddy</h3>
+                    <p>An AI-powered debugging assistant that helps developers resolve errors faster with intelligent error analysis and contextual solutions.</p>
+                </div>
+            </div>
+
+            <!-- 3D Models View -->
+            <div id="3dModelsView" class="projects-view">
+                <div class="model-carousel">
+                    <div class="carousel-container">
+                        <!-- Model 1 -->
+                        <div class="carousel-item active" data-index="0">
+                            <model-viewer src="Minidrone_chassis.glb" auto-rotate camera-controls shadow-intensity="1" alt="Mini Drone Chassis"></model-viewer>
+                            <p class="model-title">Mini Drone Chassis</p>
+                        </div>
+                        <!-- Model 2 -->
+                        <div class="carousel-item" data-index="1">
+                            <model-viewer src="Screw Box Lid (Movable Lid).glb" auto-rotate camera-controls shadow-intensity="1" alt="Screw Box Lid"></model-viewer>
+                            <p class="model-title">Screw Box Lid (Movable)</p>
+                        </div>
+                        <!-- Model 3 -->
+                        <div class="carousel-item" data-index="2">
+                            <model-viewer src="wheel in paraMETERS.glb" auto-rotate camera-controls shadow-intensity="1" alt="Parametric Wheel"></model-viewer>
+                            <p class="model-title">Parametric Wheel</p>
+                        </div>
+                        <!-- Model 4 -->
+                        <div class="carousel-item" data-index="3">
+                            <model-viewer src="Screw in parameters.glb" auto-rotate camera-controls shadow-intensity="1" alt="Screw in Parameters"></model-viewer>
+                            <p class="model-title">Screw in Parameters</p>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <button onclick="prevModel()" class="carousel-btn">&larr; Prev</button>
+                        <span id="modelIndicator">1 / 4</span>
+                        <button onclick="nextModel()" class="carousel-btn">Next &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Parse URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectType = urlParams.get('type');
+
+        const webView = document.getElementById('webProjectsView');
+        const threedView = document.getElementById('3dModelsView');
+        const title = document.getElementById('dynamicTitle');
+
+        if (projectType === 'web') {
+            webView.classList.add('active-view');
+            title.textContent = "Web Projects";
+        } else if (projectType === '3d') {
+            threedView.classList.add('active-view');
+            title.textContent = "3D Models";
+            
+            // Re-initialize carousel variables for this page
+            let currentModelIndex = 0;
+            const models = document.querySelectorAll('.carousel-item');
+            const indicator = document.getElementById('modelIndicator');
+
+            function updateCarousel() {
+                models.forEach((model, index) => {
+                    if (index === currentModelIndex) {
+                        model.classList.add('active');
+                    } else {
+                        model.classList.remove('active');
+                    }
+                });
+                indicator.textContent = `${currentModelIndex + 1} / ${models.length}`;
+            }
+
+            window.nextModel = function() {
+                currentModelIndex = (currentModelIndex + 1) % models.length;
+                updateCarousel();
+            };
+
+            window.prevModel = function() {
+                currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
+                updateCarousel();
+            };
+
+            updateCarousel();
+        } else {
+            // Default fallback
+            webView.classList.add('active-view');
+        }
+    </script>
+</body>
+</html>
