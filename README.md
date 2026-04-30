@@ -2,6 +2,8 @@
 
 Welcome to my personal portfolio website! This project is a premium, bright-themed showcase of my journey, education, and dual expertise in both web development and 3D modeling/additive manufacturing.
 
+**Live Demo / Portfolio Website:** [https://meetsaha.netlify.app/](https://meetsaha.netlify.app/)
+
 ## ✨ Features
 
 - **Premium UI/UX**: Built with a sleek "glassmorphism" aesthetic, featuring dynamic floating blobs, soft drop-shadows, and a clean cool-hues color palette.
@@ -33,7 +35,7 @@ To view the website perfectly:
 
 - **Email**: aayushviiid@gmail.com
 - **LinkedIn**: [Aayush Saha](https://www.linkedin.com/in/aayush-saha-7516a6393/)
-- **GitHub**: [Aayush-Saha2006](https://github.com/Aayush-Saha2006/MeetSaha.git)
+- **GitHub**: [Aayush-Saha2006](https://github.com/Aayush-Saha2006)
 
 ---
 *Giving imagination a physical zip code.*
