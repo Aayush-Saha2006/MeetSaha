@@ -53,6 +53,7 @@
     </style>
 </head>
 <body>
+    <canvas id="cursor-trail-canvas"></canvas>
     <div id="background-blobs">
         <div class="blob blob-1"></div>
         <div class="blob blob-2"></div>
@@ -117,6 +118,8 @@
         </div>
     </main>
 
+    <script src="script.js"></script>
+    <script src="cursor-trail.js" defer></script>
     <script>
         // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);

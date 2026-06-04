@@ -7,6 +7,8 @@ Welcome to my personal portfolio website! This project is a premium, bright-them
 ## ✨ Features
 
 - **Premium UI/UX**: Built with a sleek "glassmorphism" aesthetic, featuring dynamic floating blobs, soft drop-shadows, and a clean cool-hues color palette.
+- **Cursive Calligraphy Typography**: Main portfolio name rendered in a premium calligraphy script (`Alex Brush`) on the Home page, optimized for desktop and mobile responsiveness.
+- **Premium Background Cursor Trail Canvas**: A custom-built, high-performance HTML5 Canvas-based cursor trail that follows mouse movements with a smooth lag (easing/interpolation). Features low-opacity cyan/blue particles, pre-allocated particle pooling (zero garbage collection overhead), framerate-based adaptive density scaling, and automatic disable rules for touch/mobile devices or user-configured reduced motion profiles.
 - **Smooth Animations**: Seamless transitions between sections without page reloads, paired with popping micro-interactions on hover.
 - **Interactive 3D Viewer**: A built-in carousel utilizing Google's `<model-viewer>` to seamlessly render local `.glb` 3D engineering models directly in the browser.
 - **Dynamic Projects Routing**: Separate logical flows for viewing interactive Web Projects (like my gesture-controlled Subway Surfer) and my physical 3D Models.
@@ -14,10 +16,10 @@ Welcome to my personal portfolio website! This project is a premium, bright-them
 
 ## 🛠️ Technologies Used
 
-- **HTML5**: Semantic structure.
-- **Vanilla CSS3**: Custom animations, glassmorphism utilities, and responsive Flexbox/Grid layouts. No heavy frameworks!
-- **Vanilla JavaScript**: Handles state-based section routing, modal pop-ups, and the custom 3D model carousel logic.
-- **Model Viewer**: Web component (`<model-viewer>`) used to display 3D models seamlessly.
+- **HTML5 & Canvas API**: Standard semantic structure and a dedicated backdrop canvas for rendering the 60fps cursor particle trail.
+- **Vanilla CSS3**: Custom styling variables, custom font integration, glassmorphism utilities, and responsive Flexbox/Grid layouts.
+- **Vanilla JavaScript**: Handles state-based section navigation, modal overlays, the custom 3D model carousel, and the performant lerped cursor trail simulation.
+- **Model Viewer**: Web component (`<model-viewer>`) used to display 3D models.
 
 ## 🚀 How to Run Locally
 

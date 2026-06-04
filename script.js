@@ -65,15 +65,17 @@ function switchProjectTab(tab) {
     btns.forEach(btn => btn.classList.remove('active'));
     
     // Update views
-    document.getElementById('webProjectsView').classList.remove('active-view');
-    document.getElementById('3dModelsView').classList.remove('active-view');
+    const webView = document.getElementById('webProjectsView');
+    const threedView = document.getElementById('3dModelsView');
+    if (webView) webView.classList.remove('active-view');
+    if (threedView) threedView.classList.remove('active-view');
 
     if (tab === 'web') {
-        btns[0].classList.add('active');
-        document.getElementById('webProjectsView').classList.add('active-view');
+        if (btns[0]) btns[0].classList.add('active');
+        if (webView) webView.classList.add('active-view');
     } else {
-        btns[1].classList.add('active');
-        document.getElementById('3dModelsView').classList.add('active-view');
+        if (btns[1]) btns[1].classList.add('active');
+        if (threedView) threedView.classList.add('active-view');
     }
 }
 
@@ -90,15 +92,19 @@ function updateCarousel() {
             model.classList.remove('active');
         }
     });
-    indicator.textContent = `${currentModelIndex + 1} / ${models.length}`;
+    if (indicator) {
+        indicator.textContent = `${currentModelIndex + 1} / ${models.length}`;
+    }
 }
 
 function nextModel() {
+    if (models.length === 0) return;
     currentModelIndex = (currentModelIndex + 1) % models.length;
     updateCarousel();
 }
 
 function prevModel() {
+    if (models.length === 0) return;
     currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
     updateCarousel();
 }
